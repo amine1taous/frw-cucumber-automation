@@ -1,47 +1,42 @@
 package com.e2etests.automation.step_definitions;
 
 import org.junit.Assert;
-
 import com.e2etests.automation.page_objects.AuthentificationPage;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-
 public class AuthentificationStepDefinition {
 
-	private AuthentificationPage authentificationPage;
-	
-	public AuthentificationStepDefinition() {
-		this.authentificationPage = new AuthentificationPage();
-	}
-	
-	@Given("Je me connecte sur l application Mercury")
-	public void jeMeConnecteSurLApplicationMercury() {
-		authentificationPage.goToURL();
-	}
+    private AuthentificationPage authentificationPage;
 
-	@When("Je saisis le user name {string}")
-	public void jeSaisisLeUserName(String name) {
-		authentificationPage.fillUserName(name);
-	}
+    public AuthentificationStepDefinition() {
+        this.authentificationPage = new AuthentificationPage();
+    }
 
-	@When("Je saisis le password {string}")
-	public void jeSaisisLePassword(String password) {
-		authentificationPage.fillPassword(password);
-	}
+    @Given("Je me connecte sur l'application Mercury")
+    public void jeMeConnecteSurLApplicationMercury() {
+        authentificationPage.goToURL();
+    }
 
-	@When("Je clique sur le bouton submit")
-	public void jeCliqueSurLeBoutonSubmit() {
-		authentificationPage.clickOnSubmitButton();
-	}
+    @When("Je saisis le user name pour authentification {string}")
+    public void jeSaisisLeUserNamePourAuthentification(String name) {
+        authentificationPage.fillUserName(name);
+    }
 
-	@Then("Je me redirige vers la page home {string}")
-	public void jeMeRedirigeVersLaPageHome(String text) {
-		String verificationMessage = authentificationPage.welcomeMessage.getText();
-		Assert.assertEquals(verificationMessage, text);
-		
-	}
+    @When("Je saisis le password pour authentification {string}")
+    public void jeSaisisLePasswordPourAuthentification(String password) {
+        authentificationPage.fillPassword(password);
+    }
 
+    @When("Je clique sur le bouton submit")
+    public void jeCliqueSurLeBoutonSubmit() {
+        authentificationPage.clickOnSubmitButton();
+    }
+
+    @Then("Je me redirige vers la page home {string}")
+    public void jeMeRedirigeVersLaPageHome(String text) {
+        String verificationMessage = authentificationPage.welcomeMessage.getText();
+        Assert.assertEquals(verificationMessage, text);
+    }
 }
